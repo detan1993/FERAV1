@@ -17,6 +17,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/menu_page_background"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
@@ -25,108 +26,149 @@
             android:id="@+id/fridge_button"
             android:layout_width="147dp"
             android:layout_height="109dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="25dp"
-            android:layout_toEndOf="@+id/seatingBtn"
-            android:layout_toRightOf="@+id/seatingBtn"
-            android:adjustViewBounds="true"
-            android:background="@drawable/fridge_icon"
-            android:onClick="goToFridge"
-            android:scaleType="fitCenter"
-            tools:layout_editor_absoluteX="175dp"
-            tools:layout_editor_absoluteY="29dp" />
-
-        <Button
-            android:id="@+id/profileBtn"
-            android:layout_width="133dp"
-            android:layout_height="134dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/fridgeBtn"
-            android:layout_marginLeft="13dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="35dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/profile_icon"
-            android:scaleType="fitCenter"
-            tools:layout_editor_absoluteX="7dp"
-            tools:layout_editor_absoluteY="53dp" />
-
-        <Button
-            android:id="@+id/seatingBtn"
-            android:layout_width="137dp"
-            android:layout_height="120dp"
-            android:layout_alignLeft="@+id/profileBtn"
-            android:layout_alignStart="@+id/profileBtn"
-            android:layout_below="@+id/profileBtn"
-            android:layout_marginLeft="26dp"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="15dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/seating_icon"
-            android:scaleType="fitCenter"
-            tools:layout_editor_absoluteX="38dp"
-            tools:layout_editor_absoluteY="208dp" />
-
-        <Button
-            android:id="@+id/container_button"
-            android:layout_width="163dp"
-            android:layout_height="136dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/fridge_button"
-            android:layout_marginEnd="11dp"
-            android:layout_marginRight="11dp"
-            android:layout_marginTop="29dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="53dp"
+            android:layout_marginRight="53dp"
+            android:layout_marginTop="26dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/container_icon"
-            android:onClick="goToContainer"
+            android:background="@drawable/fridge_icon"
             android:scaleType="fitCenter"
-            tools:layout_editor_absoluteX="221dp"
-            tools:layout_editor_absoluteY="159dp" />
+            tools:layout_editor_absoluteX="160dp"
+            tools:layout_editor_absoluteY="16dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/settingBtn"
             android:layout_width="144dp"
             android:layout_height="136dp"
+
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="39dp"
+            android:layout_marginBottom="11dp"
             android:adjustViewBounds="true"
             android:background="@drawable/setting_icon"
             android:scaleType="fitCenter"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="385dp" />
+            tools:layout_editor_absoluteY="415dp" />
 
-        <Button
-            android:id="@+id/promotionBtn"
-            android:layout_width="162dp"
-            android:layout_height="130dp"
-            android:layout_below="@+id/container_button"
-            android:layout_marginTop="17dp"
-            android:layout_toEndOf="@+id/seatingBtn"
-            android:layout_toRightOf="@+id/seatingBtn"
-            android:adjustViewBounds="true"
-            android:background="@drawable/promotion_icon"
-            android:scaleType="fitCenter"
-            tools:layout_editor_absoluteX="184dp"
-            tools:layout_editor_absoluteY="313dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/salesBtn"
-            android:layout_width="123dp"
-            android:layout_height="106dp"
-            android:layout_alignLeft="@+id/container_button"
-            android:layout_alignStart="@+id/container_button"
-            android:layout_below="@+id/promotionBtn"
-            android:layout_marginLeft="19dp"
-            android:layout_marginStart="19dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/sales_icon"
-            android:scaleType="fitCenter"
-            tools:layout_editor_absoluteX="234dp"
-            tools:layout_editor_absoluteY="445dp" />
+            <Button
+                android:id="@+id/promotionBtn"
+                android:layout_width="162dp"
+                android:layout_height="130dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="130dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="35dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/promotion_icon"
+                android:scaleType="fitCenter"
+                tools:layout_editor_absoluteX="160dp"
+                tools:layout_editor_absoluteY="318dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/salesBtn"
+                android:layout_width="130dp"
+                android:layout_height="120dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="510dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/sales_icon"
+                android:scaleType="fitCenter"
+                tools:layout_editor_absoluteX="214dp"
+                tools:layout_editor_absoluteY="458dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/profileBtn"
+                android:layout_width="133dp"
+                android:layout_height="134dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="56dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/profile_icon"
+                android:scaleType="fitCenter"
+                tools:layout_editor_absoluteX="7dp"
+                tools:layout_editor_absoluteY="53dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/seatingBtn"
+                android:layout_width="137dp"
+                android:layout_height="120dp"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/seating_icon"
+                android:scaleType="fitCenter"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="213dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/container_button"
+                android:layout_width="163dp"
+                android:layout_height="136dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="205dp"
+                android:layout_marginStart="205dp"
+                android:layout_marginTop="168dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/container_icon"
+                android:scaleType="fitCenter"
+                tools:layout_editor_absoluteX="197dp"
+                tools:layout_editor_absoluteY="159dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
