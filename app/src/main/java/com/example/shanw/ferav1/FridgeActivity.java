@@ -1,7 +1,9 @@
 package com.example.shanw.ferav1;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -108,9 +110,9 @@ public class FridgeActivity extends AppCompatActivity {
 
             try
             {
-                //Shan please help me get restaurant ID from your local file.
+                SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                String restaurantId = sharedPref.getString("staff_restaurantId",null);; // get restaurant Id from local file
 
-                String restaurantId = "1"; // get restaurant Id from local file
                 System.err.println("********** Calling get Fridges Rest web service");
                 URL url = new URL(getString(R.string.VM_address) + "FoodEmblemV1-war/Resources/Sensor/getFridgesByRestaurantId/" + restaurantId + "");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

@@ -29,9 +29,11 @@ public class RestaurantStaffActivity extends AppCompatActivity {
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         String email = sharedPref.getString("staff_email",null);
         String fullName = sharedPref.getString("staff_name",null);
+        String restaurantId = sharedPref.getString("staff_restaurantId",null);
 
         System.err.print("**************************Email: " + email);
-        System.err.print("**************************Email: " + fullName);
+        System.err.print("**************************Name: " + fullName);
+        System.err.print("**************************Restaurant Id: " + restaurantId);
         //((EditText) findViewById(R.id.editText)).setText(email + " " + fullName);
     }
 }
