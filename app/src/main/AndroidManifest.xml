@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RestaurantStaffActivity" />
-        <activity android:name=".FridgeActivity" />
-        <activity android:name=".ContainerActivity"></activity>
+        <activity android:name=".RestaurantStaffActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".FridgeActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".ContainerActivity"  android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

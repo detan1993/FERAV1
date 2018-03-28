@@ -34,6 +34,7 @@
             android:layout_marginTop="26dp"
             android:adjustViewBounds="true"
             android:background="@drawable/fridge_icon"
+            android:onClick="goToFridge"
             android:scaleType="fitCenter"
             tools:layout_editor_absoluteX="160dp"
             tools:layout_editor_absoluteY="16dp" />
@@ -158,6 +159,7 @@
                 android:layout_marginTop="168dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/container_icon"
+                android:onClick="goToContainer"
                 android:scaleType="fitCenter"
                 tools:layout_editor_absoluteX="197dp"
                 tools:layout_editor_absoluteY="159dp" />
