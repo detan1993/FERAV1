@@ -1,11 +1,17 @@
-package com.example.shanw.ferav1;
+package com.example.shanw.ferav1.activity;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
+
+import com.example.shanw.ferav1.R;
+import com.example.shanw.ferav1.services.KicthenNotificationServices;
+import com.example.shanw.ferav1.services.NotificationService;
 
 public class RestaurantStaffActivity extends AppCompatActivity {
 
@@ -13,7 +19,27 @@ public class RestaurantStaffActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_staff);
-        printSharedPreferences();
+
+        boolean serviceRunningStatus = isServiceRunning(KicthenNotificationServices.class);
+        if(!serviceRunningStatus){
+            Intent intent = new Intent(this, KicthenNotificationServices.class);
+            startService(intent);
+
+        }
+       printSharedPreferences();
+    }
+
+
+    public boolean isServiceRunning(Class<?> serviceClass){
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+
+                //Toast.makeText(this, "IT IS RUNNING" ,Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        }
+        return false;
     }
 
     public void goToFridge(View view){

@@ -11,16 +11,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RestaurantStaffActivity"  android:screenOrientation="portrait"/>
-        <activity android:name=".FridgeActivity"  android:screenOrientation="portrait" />
-        <activity android:name=".ContainerActivity"  android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.RestaurantStaffActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FridgeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ContainerActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".services.NotificationService"
+            android:exported="false" />
+        <service
+            android:name=".services.KicthenNotificationServices"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.WeightNotificationServices"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

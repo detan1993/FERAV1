@@ -1,6 +1,5 @@
-package com.example.shanw.ferav1;
+package com.example.shanw.ferav1.activity;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.example.shanw.ferav1.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.example.shanw.ferav1;
+package com.example.shanw.ferav1.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.shanw.ferav1.R;
 
 import org.json.JSONObject;
 
