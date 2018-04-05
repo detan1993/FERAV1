@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -162,5 +163,9 @@ public class ContainerActivity extends AppCompatActivity {
     public void retrieveContainer(){
         doAsyncTaskButtonAsyncTask = new DoAsyncTaskButtonAsyncTask();
         doAsyncTaskButtonAsyncTask.execute("Current progress");
+    }
+
+    public void goHome(View view){
+        startActivity(new Intent(ContainerActivity.this, MainActivity.class));
     }
 }
