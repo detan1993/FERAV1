@@ -50,14 +50,14 @@ public class KicthenNotificationServices extends Service {
     private Runnable periodicUpdate = new Runnable() {
         @Override
         public void run() {
-            handler.postDelayed(periodicUpdate, 1000); // schedule next wake up every second
+            handler.postDelayed(periodicUpdate, 10000); // schedule next wake up every second
             Intent notificationIntent = new Intent(KicthenNotificationServices.this, KicthenNotificationServices.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(KicthenNotificationServices.this, 0, notificationIntent, 0);
             AlarmManager keepAwake = (AlarmManager) getSystemService(ALARM_SERVICE);
-            keepAwake.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +1000, pendingIntent);
+            keepAwake.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +10000, pendingIntent);
 
             long current = System.currentTimeMillis();
-            if ((current-current%1000)%(1000*10)  == 0) { // record on every tenth seconds (0s, 10s, 20s, 30s...)
+            if ((current-current%10000)%(10000*10)  == 0) { // record on every tenth seconds (0s, 10s, 20s, 30s...)
                 // whatever you want to do
                 getTemperatureValue();
             }
