@@ -134,15 +134,15 @@ public class ContainerActivity extends AppCompatActivity {
                 {
                     System.out.println("Inside Container number : " + i+1);
                     HashMap<String,String>  dataToStore = new HashMap<String,String>();
-                    dataToStore.put("containerId" , "Id: " + jsonArray.getJSONObject(i).getString("id"));
+                    dataToStore.put("containerId" , "Container Id : " + jsonArray.getJSONObject(i).getString("id"));
 
                     JSONObject inventoryJSONObject = jsonArray.getJSONObject(i).getJSONObject("inventory");
-                    dataToStore.put("inventoryId", "Id: " + inventoryJSONObject.getString("id"));
-                    dataToStore.put("inventoryName", "Name: " + inventoryJSONObject.getString("name"));
+                    dataToStore.put("inventoryId", "Inventory Id : " + inventoryJSONObject.getString("id"));
+                    dataToStore.put("inventoryName", "Name : " + inventoryJSONObject.getString("name"));
 
                     double inventoryWeight = Double.parseDouble(inventoryJSONObject.getString("weight"));
                     double containerWeight = Double.parseDouble(jsonArray.getJSONObject(i).getString(   "weight"));
-                    dataToStore.put("inventoryWeight", "Weight: " + String.valueOf(inventoryWeight-containerWeight));
+                    dataToStore.put("inventoryWeight", "Weight : " + String.valueOf(inventoryWeight-containerWeight));
 
                     containerList.add(dataToStore);
                 }
