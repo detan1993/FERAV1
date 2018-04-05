@@ -1,5 +1,6 @@
 package com.example.shanw.ferav1.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,10 @@ public class PromotionActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void goHome(View view){
+        startActivity(new Intent(PromotionActivity.this, MainActivity.class));
     }
 
 }

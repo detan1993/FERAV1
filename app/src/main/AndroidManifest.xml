@@ -27,6 +27,9 @@
         <activity
             android:name=".activity.ContainerActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PromotionActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".services.NotificationService"
