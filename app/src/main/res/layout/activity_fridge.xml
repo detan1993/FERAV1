@@ -6,24 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.shanw.ferav1.activity.FridgeActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorAccent"
-        app:navigationIcon="?attr/homeAsUpIndicator">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="FRIDGE"
-            android:textStyle="bold"
-            android:textColor="#ffff"
-            android:textSize="28sp"/>
-
-    </android.support.v7.widget.Toolbar>
 
     <!--<android.support.design.widget.FloatingActionButton-->
         <!--android:id="@+id/fab"-->
@@ -39,6 +22,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorAccent"
+            android:onClick="goHome"
+            app:navigationIcon="?attr/homeAsUpIndicator">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="FRIDGE"
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:textSize="28sp"/>
+
+        </android.support.v7.widget.Toolbar>
 
         <TextView
             android:id="@+id/textViewFridgeText"

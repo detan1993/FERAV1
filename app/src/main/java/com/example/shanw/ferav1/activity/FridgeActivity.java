@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -202,5 +203,7 @@ public class FridgeActivity extends AppCompatActivity {
         doAsyncTaskButtonAsyncTask.execute("Current progress");
     }
 
-
+    public void goHome(View view) {
+        startActivity(new Intent(FridgeActivity.this, MainActivity.class));
+    }
 }
