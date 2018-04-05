@@ -87,7 +87,7 @@ public class KicthenNotificationServices extends Service {
          msg.arg1 = startId;
          mServiceHandler.sendMessage(msg); */
 
-         return START_STICKY;
+         return START_NOT_STICKY ;
 
      }
 
@@ -230,28 +230,23 @@ public class KicthenNotificationServices extends Service {
                             setDefaults(Notification.DEFAULT_SOUND).build();
 
 
-                    notify.flags |= Notification.FLAG_AUTO_CANCEL;
-                    notif.notify(notificationId, notify);
+                    Intent viewIntent = new Intent(KicthenNotificationServices.this, FridgeActivity.class);
+                    // viewIntent.putExtra(EXTRA_EVENT_ID, eventId);
+                    PendingIntent viewPendingIntent =   PendingIntent.getActivity(KicthenNotificationServices.this, 0, viewIntent, 0);
 
-                    Intent notificationIntent = new Intent( getApplicationContext() , FridgeActivity.class);
+                    NotificationCompat.Builder notificationBuilder =
+                            new NotificationCompat.Builder(KicthenNotificationServices.this).setSmallIcon(R.drawable.food_emblem_home_text)
+                                    .setContentTitle("ALERT Fridge Temperature")
+                                    .setContentText("Fridge ID#" +  fridge.getFridgeId() + " temperature is above threshold by " + fridge.getTemperatureDiff() + "C")
+                                    .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 }).setDefaults(Notification.DEFAULT_SOUND).setContentIntent(viewPendingIntent);
 
-                    PendingIntent intent = PendingIntent.getActivity(getApplicationContext(), 0,
-                            notificationIntent, 0);
+                    // Get an instance of the NotificationManager service
+                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(KicthenNotificationServices.this);
 
-                    notif.notify(notificationId, notify);
+                    //Build the notification and issues it with notification manager.
+                    notificationManager.notify(notificationId, notificationBuilder.build());
+                    ++notificationId;
 
-
-                  /*  Intent notificationIntent = new Intent(context, HomeActivity.class);
-
-                    notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                            | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-                    PendingIntent intent = PendingIntent.getActivity(context, 0,
-                            notificationIntent, 0);
-
-                    notification.setLatestEventInfo(context, title, message, intent);
-                    notification.flags |= Notification.FLAG_AUTO_CANCEL;
-                    notificationManager.notify(0, notification);*/
                 }
 
 
@@ -385,24 +380,8 @@ public class KicthenNotificationServices extends Service {
 
                     //Build the notification and issues it with notification manager.
                     notificationManager.notify(notificationId, notificationBuilder.build());
+                    ++notificationId;
 
-                    /*String tittle="ALERT";
-                    String subject="ALERT Container Weight";
-                    String body= container.getInventoryName() + " ID#" +  container.getInventoryId() + " in Container ID#" + container.getContainerId() + " is below threshold by " + container.getWeightDiff() + "KG";
-                    NotificationManager notif=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    Notification notify=new Notification.Builder    (getApplicationContext()).setContentTitle(tittle).setContentText(body).
-                            setContentTitle(subject).setSmallIcon(R.drawable.ic_launcher_background).setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 }).
-                            setDefaults(Notification.DEFAULT_SOUND).build();
-
-
-                    notify.flags |= Notification.FLAG_AUTO_CANCEL;
-                    notif.notify(notificationId, notify);
-
-
-
-                    notif.notify(notificationId, notify);*/
-
-// Build intent for notification contentj
 
                 }
 
