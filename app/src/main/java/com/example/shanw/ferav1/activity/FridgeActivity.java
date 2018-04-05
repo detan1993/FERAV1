@@ -204,6 +204,6 @@ public class FridgeActivity extends AppCompatActivity {
     }
 
     public void goHome(View view) {
-        startActivity(new Intent(FridgeActivity.this, MainActivity.class));
+        startActivity(new Intent(FridgeActivity.this, RestaurantStaffActivity.class));
     }
 }

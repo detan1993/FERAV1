@@ -166,6 +166,6 @@ public class ContainerActivity extends AppCompatActivity {
     }
 
     public void goHome(View view){
-        startActivity(new Intent(ContainerActivity.this, MainActivity.class));
+        startActivity(new Intent(ContainerActivity.this, RestaurantStaffActivity.class));
     }
 }

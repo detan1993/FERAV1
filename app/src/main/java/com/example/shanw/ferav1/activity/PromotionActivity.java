@@ -30,7 +30,7 @@ public class PromotionActivity extends AppCompatActivity {
     }
 
     public void goHome(View view){
-        startActivity(new Intent(PromotionActivity.this, MainActivity.class));
+        startActivity(new Intent(PromotionActivity.this, RestaurantStaffActivity.class));
     }
 
 }
