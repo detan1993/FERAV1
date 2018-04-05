@@ -27,7 +27,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class WeightNotificationServices extends Service {
@@ -39,14 +38,14 @@ public class WeightNotificationServices extends Service {
     private Runnable periodicUpdate = new Runnable() {
         @Override
         public void run() {
-            handler.postDelayed(periodicUpdate, 10000); // schedule next wake up every second
-            Intent notificationIntent = new Intent(WeightNotificationServices.this, KicthenNotificationServices.class);
+            handler.postDelayed(periodicUpdate, 1000); // schedule next wake up every second
+            Intent notificationIntent = new Intent(WeightNotificationServices.this, WeightNotificationServices.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(WeightNotificationServices.this, 0, notificationIntent, 0);
             AlarmManager keepAwake = (AlarmManager) getSystemService(ALARM_SERVICE);
-            keepAwake.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 10000, pendingIntent);
+            keepAwake.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 1000, pendingIntent);
 
             long current = System.currentTimeMillis();
-            if ((current-current%10000)%(10000*10)  == 0) { // record on every tenth seconds (0s, 10s, 20s, 30s...)
+            if ((current-current%1000)%(1000*10)  == 0) { // record on every tenth seconds (0s, 10s, 20s, 30s...)
                 // whatever you want to do
                 getWeigthValue();
             }
@@ -66,7 +65,7 @@ public class WeightNotificationServices extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-        Toast.makeText(this, "Notification Services started" ,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Weight Notification Services started" ,Toast.LENGTH_SHORT).show();
         handler.post(periodicUpdate);
      /*    Message msg = mServiceHandler.obtainMessage();
          msg.arg1 = startId;
@@ -80,8 +79,8 @@ public class WeightNotificationServices extends Service {
     public void getWeigthValue(){
         // Toast.makeText(this, "SUCCESS" ,Toast.LENGTH_SHORT).show();
 
-      //  KicthenNotificationServices.GetTemperatureValueAsync getTemp = new KicthenNotificationServices.GetTemperatureValueAsync();
-      //  getTemp.execute("Get temperature");
+         GetTemperatureValueAsync monitorWeight = new GetTemperatureValueAsync();
+        monitorWeight.execute("Get Weight");
     }
 
 
@@ -105,8 +104,8 @@ public class WeightNotificationServices extends Service {
                 SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
                 String restaurantId = sharedPref.getString("staff_restaurantId",null);; // get restaurant Id from local file
 
-                System.err.println("********** Calling get Fridges Rest web service");
-                URL url = new URL(getString(R.string.VM_address) + "FoodEmblemV1-war/Resources/Sensor/getFridgesByRestaurantId/" + restaurantId + "");
+                System.err.println("********** Calling get weight Rest web service");
+                URL url = new URL(getString(R.string.VM_address) + "FoodEmblemV1-war/Resources/Sensor/getContainersByRestaurantId/" + restaurantId + "");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = new BufferedInputStream(httpURLConnection.getInputStream());
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -148,36 +147,47 @@ public class WeightNotificationServices extends Service {
 
             //this is how we populate the value obtained from web service to list view.
             try {
-                List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
-
                 JSONObject jsonObject = new JSONObject(jsonString);
-                JSONArray jsonArray = jsonObject.getJSONArray("fridges");
-                double temperatureValue = 0.0;
-                double threshold = 0.0;
-                String fridgeId = "";
-                List<KicthenNotificationServices.FridgeTemp> fridges = new ArrayList<>();
+                JSONArray jsonArray = jsonObject.getJSONArray("containers");
+                double containerWeight = 0.0;
+                double inventoryWeight = 0.0;
+                double threshold =0.0;
+                String containerId= "";
+                String inventoryId= "";
+                String inventoryName = "";
+                List<Container> containers = new ArrayList<>();
                 //jsonObject.getString()
                 for (int i = 0; i < jsonArray.length(); i++) {
 
-                    temperatureValue = Double.parseDouble(jsonArray.getJSONObject(i).getString("temperature"));
-                    threshold = Double.parseDouble(jsonArray.getJSONObject(i).getString("threshold"));
+                    containerId = jsonArray.getJSONObject(i).getString("id");
+                    containerWeight = Double.parseDouble(jsonArray.getJSONObject(i).getString("weight"));
+                    /*JSONArray inventoryInformation = jsonArray.getJSONObject(i).getJSONArray("inventory");
+                    inventoryWeight = Double.parseDouble(inventoryInformation.getJSONObject(0).getString("weight"));
+                    threshold = Double.parseDouble(inventoryInformation.getJSONObject(0).getString("threshold"));
+                    inventoryName = inventoryInformation.getJSONObject(0).getString("name");
+                    inventoryId = inventoryInformation.getJSONObject(0).getString("id");
 
-                    System.err.println("****************************temperatureValue" + temperatureValue);
-                    System.err.println("****************************temperatureValue" + threshold);
+                    System.err.println("****************************Inventory Threshold" + threshold);
+                    System.err.println("****************************Inventory Weight" + inventoryWeight);
+
+                    double netInventoryWeight = inventoryWeight - containerWeight;
 
 
-                    if (temperatureValue > threshold) {
-                        double tempDiff = temperatureValue - threshold;
-                        //fridges.add(new KicthenNotificationServices.FridgeTemp(fridgeId, tempDiff));
-
-
+                    if (netInventoryWeight < threshold) {
+                        double weigthDiff = threshold - netInventoryWeight;
+                        containers.add( new Container(containerId, inventoryId, inventoryName, weigthDiff));
                     }
+                    else{
+                        getToastMessage("Name is  " + inventoryName + " weight is " + inventoryWeight);
+                    }*/
+
+                    getToastMessage("containe id " + containerId);
 
                 }
-                for (KicthenNotificationServices.FridgeTemp fridge : fridges) {
+             /*   for (Container container : containers) {
                     String tittle="ALERT";
-                    String subject="ALERT Fridge Temperature";
-                    String body="Fridge ID#" +  fridge.getFridgeId() + " temperature is above threshold by " + fridge.getTemperatureDiff() + "C";
+                    String subject="ALERT Container Weight";
+                    String body= container.getInventoryName() + " ID#" +  container.getInventoryId() + " in Container ID#" + container.getContainerId() + " is below threshold by " + container.getWeightDiff() + "KG";
                     NotificationManager notif=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                     Notification notify=new Notification.Builder    (getApplicationContext()).setContentTitle(tittle).setContentText(body).
                             setContentTitle(subject).setSmallIcon(R.drawable.ic_launcher_background).setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 }).
@@ -194,19 +204,7 @@ public class WeightNotificationServices extends Service {
 
                     notif.notify(notificationId, notify);
 
-
-                  /*  Intent notificationIntent = new Intent(context, HomeActivity.class);
-
-                    notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                            | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-                    PendingIntent intent = PendingIntent.getActivity(context, 0,
-                            notificationIntent, 0);
-
-                    notification.setLatestEventInfo(context, title, message, intent);
-                    notification.flags |= Notification.FLAG_AUTO_CANCEL;
-                    notificationManager.notify(0, notification);*/
-                }
+                }*/
 
 
             }
@@ -225,6 +223,62 @@ public class WeightNotificationServices extends Service {
 
         Toast.makeText(this, val ,Toast.LENGTH_SHORT).show();
     }
+
+    public class Container{
+
+        private String containerId;
+        private String inventoryId;
+        private String inventoryName;
+        private double weightDiff;
+
+        public Container(){
+
+        }
+
+        public Container(String containerId , String inventoryId , String inventoryName , double weightDiff){
+
+            this.setContainerId(containerId);
+            this.setInventoryId(inventoryId);
+            this.setInventoryName(inventoryName);
+            this.setWeightDiff(weightDiff);
+
+        }
+
+
+        public String getContainerId() {
+            return containerId;
+        }
+
+        public void setContainerId(String containerId) {
+            this.containerId = containerId;
+        }
+
+        public String getInventoryId() {
+            return inventoryId;
+        }
+
+        public void setInventoryId(String inventoryId) {
+            this.inventoryId = inventoryId;
+        }
+
+        public String getInventoryName() {
+            return inventoryName;
+        }
+
+        public void setInventoryName(String inventoryName) {
+            this.inventoryName = inventoryName;
+        }
+
+        public double getWeightDiff() {
+            return weightDiff;
+        }
+
+        public void setWeightDiff(double weightDiff) {
+            this.weightDiff = weightDiff;
+        }
+    }
+
+
 
 
 }

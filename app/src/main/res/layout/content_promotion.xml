@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.shanw.ferav1.PromotionActivity"
+    tools:context="com.example.shanw.ferav1.activity.PromotionActivity"
     tools:showIn="@layout/activity_promotion_staff">
 
 </android.support.constraint.ConstraintLayout>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.shanw.ferav1.R;
 import com.example.shanw.ferav1.services.KicthenNotificationServices;
 import com.example.shanw.ferav1.services.NotificationService;
+import com.example.shanw.ferav1.services.WeightNotificationServices;
 
 public class RestaurantStaffActivity extends AppCompatActivity {
 
@@ -20,13 +21,20 @@ public class RestaurantStaffActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_staff);
 
-        boolean serviceRunningStatus = isServiceRunning(KicthenNotificationServices.class);
-        if(!serviceRunningStatus){
+        boolean tempServiceStatus = isServiceRunning(KicthenNotificationServices.class);
+        boolean weightServiceStatus =  isServiceRunning(WeightNotificationServices.class);
+       if(!tempServiceStatus){
             Intent intent = new Intent(this, KicthenNotificationServices.class);
             startService(intent);
 
         }
-       printSharedPreferences();
+       /* if(!weightServiceStatus) {
+            Intent intent = new Intent(this, WeightNotificationServices.class);
+            startService(intent);
+        }*/
+
+
+            printSharedPreferences();
     }
 
 
