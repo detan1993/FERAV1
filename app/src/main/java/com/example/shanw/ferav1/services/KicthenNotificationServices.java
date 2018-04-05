@@ -214,10 +214,10 @@ public class KicthenNotificationServices extends Service {
                         notify.flags |= Notification.FLAG_AUTO_CANCEL;
                         notif.notify(notificationId, notify);*/
 
-                    } else
+                    } /*else
                     {
                         getToastMessage("Safe!!");
-                    }
+                    }*/
 
                 }
                 for (FridgeTemp fridge : fridges) {
@@ -353,13 +353,10 @@ public class KicthenNotificationServices extends Service {
                         double weigthDiff = threshold - netInventoryWeight;
                         containers.add( new Container(containerId, inventoryId, inventoryName, weigthDiff));
                     }
-                    else{
+                  /*  else{
                         getToastMessage("Coninatener safe!!");
-                     }
-                    /*else{
-                        getToastMessage("Name is  " + inventoryName + " weight is " + inventoryWeight);
-                    }*/
-
+                     }*/
+                    
                   // getToastMessage("containe id " + containerId + " size  " + inventoryInformation.length());
 
                 }
