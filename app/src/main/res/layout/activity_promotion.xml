@@ -33,55 +33,60 @@
         </android.support.v7.widget.Toolbar>
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Description" />
+            android:hint="Description"
+            android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/editPromo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:text="Promotion %" />
+            android:ellipsize="end"
+            android:hint="Percentage"
+            android:inputType="number" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/editStartDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
-            android:text="Start Date" />
+            android:focusable="false"
+            android:hint="StartDate"
+            android:inputType="date" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/editStartTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="time"
-            android:text="Start Time" />
+            android:focusable="false"
+            android:hint="StartTime"
+            android:inputType="time" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/editEndDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="date"
-            android:text="End Date" />
+            android:focusable="false"
+            android:hint="EndDate"
+            android:inputType="date" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/editEndTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="time"
-            android:text="End Time" />
+            android:hint="EndTime"
+            android:focusable="false"
+            android:inputType="time" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/createBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Create" />

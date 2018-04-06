@@ -58,6 +58,10 @@ public class RestaurantStaffActivity extends AppCompatActivity {
         startActivity(new Intent(RestaurantStaffActivity.this, ContainerActivity.class));
     }
 
+    public void goToPromo(View view){
+        startActivity(new Intent(RestaurantStaffActivity.this, ViewPromotionActivity.class));
+    }
+
     public void printSharedPreferences(){
         System.err.print("************************* PRINTSHAREDPREFERENCES CALLED");
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
