@@ -41,7 +41,9 @@
         <service
             android:name=".services.WeightNotificationServices"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".activity.RestaurantSeatingActivity"></activity>
     </application>
 
 </manifest>
