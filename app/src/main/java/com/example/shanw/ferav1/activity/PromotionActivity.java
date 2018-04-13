@@ -220,8 +220,8 @@ public class PromotionActivity extends AppCompatActivity {
         });
     }
 
-    public void goHome(View view){
-        startActivity(new Intent(PromotionActivity.this, RestaurantStaffActivity.class));
+    public void goBackPromo(View view){
+        startActivity(new Intent(PromotionActivity.this, ViewPromotionActivity.class));
     }
 
     public void createPromo(){

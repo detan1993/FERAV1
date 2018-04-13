@@ -6,14 +6,34 @@
     android:layout_height="match_parent"
     tools:context="com.example.shanw.ferav1.activity.ViewPromotionActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorAccent"
+        android:onClick="goHomePromo"
+        app:navigationIcon="?attr/homeAsUpIndicator">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="PROMOTION"
+            android:textColor="#ffff"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+
+
     <ImageButton
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignEnd="@+id/tableLayout"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="22dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="59dp"
         app:srcCompat="@drawable/ic_add_circle_outline_black_24dp" />
 
     <TableLayout
@@ -21,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="110dp">
 
         <TableRow
             android:layout_width="match_parent"

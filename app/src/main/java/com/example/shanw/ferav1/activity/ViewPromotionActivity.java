@@ -37,6 +37,12 @@ public class ViewPromotionActivity extends AppCompatActivity {
         TextView enddatetime = findViewById(R.id.enddatetime);
         TextView desc = findViewById(R.id.description);
     }
+
+    public void goHomePromo(View view){
+        Intent i = new Intent(this,RestaurantStaffActivity.class);
+        startActivity(i);
+
+    }
     public void loadPromo() {
         new AsyncTask<Void, Void, String>() {
             @Override
