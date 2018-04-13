@@ -131,7 +131,7 @@
                 android:id="@+id/seatingBtn"
                 android:layout_width="137dp"
                 android:layout_height="120dp"
-
+                android:onClick="goToSeating"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"

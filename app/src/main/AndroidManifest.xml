@@ -43,7 +43,10 @@
             android:enabled="true"
             android:exported="true" />
 
+
         <activity android:name=".activity.ViewPromotionActivity"></activity>
+        <activity android:name=".activity.RestaurantSeatingActivity"></activity>
+
     </application>
 
 </manifest>
