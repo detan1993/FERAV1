@@ -30,16 +30,63 @@
 
         </android.support.v7.widget.Toolbar>
 
-
-        <TextView
-            android:id="@+id/tv_activeSeating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/tv_allSeating"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="100dp">
+
+            <pl.droidsonroids.gif.GifTextView
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/restseating" />
+        </RelativeLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/activeSeatingLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total number of Tables occupied: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_activeSeating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TEXT" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/allSeatingLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total number of Tables: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_allSeating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TEXT" />
+
+            </TableRow>
+
+
+        </TableLayout>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

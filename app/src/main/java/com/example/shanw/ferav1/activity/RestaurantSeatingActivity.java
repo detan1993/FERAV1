@@ -128,7 +128,7 @@ public class RestaurantSeatingActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(jsonString);
                 JSONArray jsonArray = jsonObject.getJSONArray("restaurantSeatings");
                 TextView tv = findViewById(R.id.tv_activeSeating);
-                tv.setText("Total number of Tables occupied: " + jsonArray.length());
+                tv.setText(jsonArray.length());
             }
 
             catch(Exception ex){
@@ -178,7 +178,7 @@ public class RestaurantSeatingActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(jsonString);
                 String result = jsonObject.getString("rsCount");
                 TextView tv = findViewById(R.id.tv_allSeating);
-                tv.setText("Total number of Tables: " + result);
+                tv.setText(result);
             }
 
             catch(Exception ex){
