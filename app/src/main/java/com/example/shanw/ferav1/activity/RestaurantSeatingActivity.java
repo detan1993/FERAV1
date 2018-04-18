@@ -128,7 +128,7 @@ public class RestaurantSeatingActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(jsonString);
                 JSONArray jsonArray = jsonObject.getJSONArray("restaurantSeatings");
                 TextView tv = findViewById(R.id.tv_activeSeating);
-                tv.setText(jsonArray.length());
+                tv.setText(String.valueOf(jsonArray.length()));
             }
 
             catch(Exception ex){
